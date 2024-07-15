@@ -69,6 +69,13 @@ export class EJ2Grid extends StreamlitComponentBase<State> {
     }
   }
 
+  public dataBound = (): void => {
+    if (this.pivotGridInstance) {
+      const gridData = this.pivotGridInstance.engineModule.pivotValues;
+      Streamlit.setComponentValue(gridData);
+    }
+  }
+
   public render = (): ReactNode => {
 
     const totalColumns: any[] = this.renderColumns(this.props.args.params.data);
